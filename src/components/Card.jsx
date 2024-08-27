@@ -3,7 +3,7 @@ import { useSpring, animated } from '@react-spring/web';
 import PropTypes from 'prop-types';
 import imageCard from '../assets/images/fron-card.png'
 
-export default function Card({value, onClick  }) {
+export default function Card({card, onClick  }) {
   const [flipped, setFlipped] = useState(false);
 
   const { transform } = useSpring({
@@ -41,7 +41,7 @@ export default function Card({value, onClick  }) {
             width: '100%',
             height: '100%',
             backfaceVisibility: 'hidden',
-            background: '#FFFFFF', // Cambia el color de fondo de la carta
+            background: '#FFFFFF',
             border: '2px solid #000000',
             borderRadius: '1rem',
             display: 'flex',
@@ -50,7 +50,14 @@ export default function Card({value, onClick  }) {
             fontSize: '24px',
           }}
         >
-          {flipped && value}
+          {flipped 
+          ? 
+          <div className=' flex flex-col items-center'>
+            <h2 className=' text-2xl font-bold'>{card.type} </h2>
+            <p className='text-lg w-4/5'>{card.description} </p>
+          </div>
+          
+          : null}
         </div>
         
         {/* Cara posterior de la carta (visible antes de voltearse) */}
@@ -67,17 +74,19 @@ export default function Card({value, onClick  }) {
             justifyContent: 'center',
             alignItems: 'center',
           }}
+          className='flex flex-col'
         >
           <img
             src={imageCard} // Agrega la URL de tu imagen aquí
             alt="Back of card"
             style={{
-              width: '100%',
-              height: '100%',
+              width: '70%',
+              height: '70%',
               objectFit: 'cover',
-              borderRadius: '1rem',
             }}
           />
+
+            <h1 className='text-2xl font-bold text-white'>Challenges cards</h1>
         </div>
       </animated.div>
     </div>
@@ -85,7 +94,7 @@ export default function Card({value, onClick  }) {
 }
 
 Card.propTypes = {
-    value: PropTypes.string,
+    card: PropTypes.array,
     onClick: PropTypes.func,
 }
 

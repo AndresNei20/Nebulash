@@ -1,7 +1,6 @@
 import { useState } from "react";
 import Card from "./Card";
-
-const challenges = ['Comer', 'bailar', 'jugar', 'correr'];
+import { challenges } from "../Data/challenges";
 
 function shuffle(deck) {
   return deck.sort(() => Math.random() - 0.5);
@@ -18,7 +17,7 @@ export function Deck() {
   return (
     <div className="deck">
       <Card
-        value={deck[currentIndex]}
+        card={deck[currentIndex]}
         onClick={handleCardClick}
       />
     </div>
