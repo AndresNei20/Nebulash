@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useSpring, animated } from '@react-spring/web';
 import PropTypes from 'prop-types';
+import imageCard from '../assets/images/fron-card.png'
 
 export default function Card({value, onClick  }) {
   const [flipped, setFlipped] = useState(false);
@@ -13,10 +14,17 @@ export default function Card({value, onClick  }) {
   return (
     <div
       onClick={() => {
-        setFlipped(!flipped)
-        onClick()
-    }}
-      style={{ perspective: '1000px', width: '100px', height: '150px' }}
+        setFlipped(!flipped);
+        onClick();
+      }}
+      style={{
+        perspective: '1000px',
+        width: '20rem',
+        height: '30rem',
+        borderRadius: '1rem',
+        boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+      }}
+      className="card-container"
     >
       <animated.div
         style={{
@@ -26,29 +34,50 @@ export default function Card({value, onClick  }) {
           height: '100%',
         }}
       >
-        <div style={{
-          position: 'absolute',
-          width: '100%',
-          height: '100%',
-          backfaceVisibility: 'hidden',
-          background: 'white',
-          border: '1px solid black',
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          fontSize: '24px'
-        }}>
+        {/* Cara frontal de la carta (contenido visible cuando está volteada) */}
+        <div
+          style={{
+            position: 'absolute',
+            width: '100%',
+            height: '100%',
+            backfaceVisibility: 'hidden',
+            background: '#FFFFFF', // Cambia el color de fondo de la carta
+            border: '2px solid #000000',
+            borderRadius: '1rem',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            fontSize: '24px',
+          }}
+        >
           {flipped && value}
         </div>
-        <div style={{
-          position: 'absolute',
-          width: '100%',
-          height: '100%',
-          backfaceVisibility: 'hidden',
-          background: 'gray',
-          transform: 'rotateY(180deg)',
-        }}>
-          {/* Card Back */}
+        
+        {/* Cara posterior de la carta (visible antes de voltearse) */}
+        <div
+          style={{
+            position: 'absolute',
+            width: '100%',
+            height: '100%',
+            backfaceVisibility: 'hidden',
+            background: '#5D2EC9', // Cambia el color de fondo de la parte posterior
+            borderRadius: '1rem',
+            transform: 'rotateY(180deg)',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}
+        >
+          <img
+            src={imageCard} // Agrega la URL de tu imagen aquí
+            alt="Back of card"
+            style={{
+              width: '100%',
+              height: '100%',
+              objectFit: 'cover',
+              borderRadius: '1rem',
+            }}
+          />
         </div>
       </animated.div>
     </div>
