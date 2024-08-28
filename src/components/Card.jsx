@@ -1,9 +1,13 @@
 import { useState } from 'react';
 import { useSpring, animated } from '@react-spring/web';
 import PropTypes from 'prop-types';
-import imageCard from '../assets/images/fron-card.png'
+import imageEstelar from '../assets/images/estelares.png'
+import imageEspecial from '../assets/images/especiales.png'
+import imageIndividual from '../assets/images/individual.png'
+import imageCompetitivo from '../assets/images/competitivo.png'
+import imageCooperativo from '../assets/images/cooperativo.png'
 
-export default function Card({card, onClick  }) {
+export default function Card({card, type, onClick}) {
   const [flipped, setFlipped] = useState(false);
 
   const { transform } = useSpring({
@@ -20,11 +24,11 @@ export default function Card({card, onClick  }) {
       style={{
         perspective: '1000px',
         width: '20rem',
-        height: '30rem',
+        height: '35rem',
         borderRadius: '1rem',
         boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
       }}
-      className="card-container"
+      className=" w-full m-auto my-6"
     >
       <animated.div
         style={{
@@ -41,8 +45,7 @@ export default function Card({card, onClick  }) {
             width: '100%',
             height: '100%',
             backfaceVisibility: 'hidden',
-            background: '#FFFFFF',
-            border: '2px solid #000000',
+            background: type === 'estelares' ? 'linear-gradient(180deg, rgba(17,0,84,1) 0%, rgba(93,46,201,1) 100%)' : 'linear-gradient(180deg, rgba(0,247,177,1) 0%, rgba(0,253,241,1) 100%)' , 
             borderRadius: '1rem',
             display: 'flex',
             justifyContent: 'center',
@@ -52,9 +55,15 @@ export default function Card({card, onClick  }) {
         >
           {flipped 
           ? 
-          <div className=' flex flex-col items-center'>
-            <h2 className=' text-2xl font-bold'>{card.type} </h2>
-            <p className='text-lg w-4/5'>{card.description} </p>
+          <div className=' flex flex-col items-center justify-start h-full w-full'>
+            <img
+              src={card.type === 'individual' ? imageIndividual : card.type === 'cooperativo' ? imageCooperativo : card.type === 'competitivo' ? imageCompetitivo : ''} 
+              alt="Back of card"
+              className='w-full'
+            />
+            <h1 className={`text-5xl font-bold ${type === 'estelares' ?  'text-white' : 'text-blue-950' }`}>{card.line1} </h1>
+            <h1 className={`text-3xl font-bold ${type === 'estelares' ?  'text-white' : 'text-blue-950' }`}>{card.line2} </h1>
+            <p className={`mt-5 text-sm w-4/5 text-center font-medium ${type === 'estelares' ?  'text-white' : 'text-blue-950' }`}>{card.description} </p>
           </div>
           
           : null}
@@ -67,7 +76,7 @@ export default function Card({card, onClick  }) {
             width: '100%',
             height: '100%',
             backfaceVisibility: 'hidden',
-            background: '#5D2EC9', // Cambia el color de fondo de la parte posterior
+            background: type === 'estelares' ? 'linear-gradient(180deg, rgba(17,0,84,1) 0%, rgba(93,46,201,1) 100%)' : 'linear-gradient(180deg, rgba(0,247,177,1) 0%, rgba(0,253,241,1) 100%)' , 
             borderRadius: '1rem',
             transform: 'rotateY(180deg)',
             display: 'flex',
@@ -76,17 +85,15 @@ export default function Card({card, onClick  }) {
           }}
           className='flex flex-col'
         >
+          
           <img
-            src={imageCard} // Agrega la URL de tu imagen aquí
+            src={type === 'estelares' ? imageEstelar : imageEspecial} 
             alt="Back of card"
-            style={{
-              width: '70%',
-              height: '70%',
-              objectFit: 'cover',
-            }}
+            className='w-full'
           />
 
-            <h1 className='text-2xl font-bold text-white'>Challenges cards</h1>
+          <h1 className={`text-5xl font-bold ${type === 'estelares' ?  'text-white' : 'text-blue-950' }`}>Misiones </h1>
+          <h1 className={`text-3xl font-bold ${type === 'estelares' ?  'text-white' : 'text-blue-950' }`}>{type} </h1>
         </div>
       </animated.div>
     </div>
@@ -94,7 +101,8 @@ export default function Card({card, onClick  }) {
 }
 
 Card.propTypes = {
-    card: PropTypes.array,
+    card: PropTypes.object,
+    type: PropTypes.string,
     onClick: PropTypes.func,
 }
 
