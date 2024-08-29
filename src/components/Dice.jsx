@@ -27,7 +27,7 @@ export const Dice = () => {
   }
 
   return (
-    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
       <animated.div
         style={{
           width: '120px',
@@ -54,6 +54,7 @@ export const Dice = () => {
         onMouseLeave={(e) => {
           e.currentTarget.style.background = 'linear-gradient(145deg, ##AEA2F7, #e0e0e0)';
         }}
+        className=' h-full m-auto'
       >
         {value}
       </animated.div>

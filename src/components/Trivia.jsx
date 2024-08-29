@@ -18,7 +18,7 @@ export const Trivia = () => {
   };
 
   return (
-    <div className="flex items-center justify-center h-screen bg-gray-100">
+    <div className="flex items-center justify-center">
       <button
         onClick={handleOpenPopup}
         className="bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg hover:bg-green-600 transition transform hover:scale-105"
