@@ -1,3 +1,4 @@
+import { Trivia } from "./components"
 import { Deck } from "./components/Deck"
 import { Dice } from "./components/Dice"
 
@@ -7,6 +8,7 @@ function App() {
     <>
       <Deck/>
       <Dice/>
+      <Trivia/>
     </>
   )
 }
