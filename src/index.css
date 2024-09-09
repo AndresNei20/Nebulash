@@ -1,3 +1,19 @@
+#root {
+    width: 100%;
+    min-height: 100vh; 
+    background-color: #05032A;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background-color: #05032A; /* Evita que el fondo sea blanco fuera del contenido */
+}
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

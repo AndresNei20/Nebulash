@@ -30,8 +30,8 @@ export const Dice = () => {
     <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
       <animated.div
         style={{
-          width: '120px',
-          height: '120px',
+          width: '5rem',
+          height: '5rem',
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',

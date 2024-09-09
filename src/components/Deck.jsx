@@ -17,7 +17,7 @@ export function Deck() {
 
   return (
     <div className="flex overflow-x-auto snap-x snap-mandatory">
-      <div className="flex flex-none w-full snap-center">
+      <div className="flex flex-none w-full snap-center justify-center">
         <Card
           card={deckEsteral[currentIndex]}
           type='estelares'

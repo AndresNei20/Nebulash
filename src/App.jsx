@@ -7,10 +7,10 @@ function App() {
 
   return (
     <div className="flex flex-col items-center">
-      <h1 className=" text-5xl font-bold mt-5">Nebulash</h1>
+      <h1 className=" text-6xl font-bold mt-5 text-white">Nebulash</h1>
       <Deck/>
 
-      <div className="flex flex-row gap-5">
+      <div className="flex flex-row gap-5 my-4">
         <Dice/>
         <Trivia/>
         <LetterBtn/>

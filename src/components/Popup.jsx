@@ -16,9 +16,9 @@ const Popup = ({ isOpen, onClose, question, hint, answer }) => {
   };
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center z-50">
+    <div className="fixed inset-0 left-0 flex items-center justify-center z-50">
       <div className="fixed inset-0 bg-black opacity-50"></div>
-      <div className="relative bg-white p-6 rounded-lg shadow-2xl transform transition-transform duration-300 scale-100 hover:scale-105 w-80 max-w-sm mx-4">
+      <div className="relative bg-white p-6 rounded-lg shadow-2xl transform transition-transform duration-300 flex flex-col self-center scale-100 hover:scale-105 w-full mx-20">
         <button
           onClick={onClose}
           className="absolute top-2 right-2 text-gray-500 hover:text-gray-700 transition"

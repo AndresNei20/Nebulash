@@ -28,7 +28,7 @@ export default function Card({card, type, onClick}) {
         borderRadius: '1rem',
         boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
       }}
-      className=" w-full m-auto my-6"
+      className=" w-full m-auto my-6 flex justify-center"
     >
       <animated.div
         style={{
@@ -55,7 +55,7 @@ export default function Card({card, type, onClick}) {
         >
           {flipped 
           ? 
-          <div className=' flex flex-col items-center justify-start h-full w-full'>
+          <div className=' flex flex-col items-center justify-center h-full w-full'>
             <img
               src={card.type === 'individual' ? imageIndividual : card.type === 'cooperativo' ? imageCooperativo : card.type === 'competitivo' ? imageCompetitivo : ''} 
               alt="Back of card"
@@ -83,7 +83,7 @@ export default function Card({card, type, onClick}) {
             justifyContent: 'center',
             alignItems: 'center',
           }}
-          className='flex flex-col'
+          className='flex flex-col justify-center'
         >
           
           <img
